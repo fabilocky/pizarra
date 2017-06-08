@@ -2,8 +2,8 @@ var ultimateScoreboard = {};
 
 // Default settings
 ultimateScoreboard.Defaults = {
-	us: "Us", // STRING
-	them: "Them", // STRING
+	us: "Luchador 1", // STRING
+	them: "Luchador 2", // STRING
 	usScore: 0, // INT
 	themScore: 0, // INT
 	timeCap: "" // STRING
@@ -219,13 +219,13 @@ ultimateScoreboard.Bind = function() {
 
 		if (clicked_team == 'us')
 		{
-			$('#team-name-modal label').text('Our team name');
+			$('#team-name-modal label').text('Nombre Luchador 1');
 			$('#team-name-modal .add-on i').removeClass('icon-plane').addClass('icon-home');
 		}
 
 		if (clicked_team == 'them')
 		{
-			$('#team-name-modal label').text('Their team name');
+			$('#team-name-modal label').text('Nombre Luchador 2');
 			$('#team-name-modal .add-on i').removeClass('icon-home').addClass('icon-plane');
 		}
 
