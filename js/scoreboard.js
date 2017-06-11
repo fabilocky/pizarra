@@ -6,6 +6,10 @@ ultimateScoreboard.Defaults = {
 	them: "Luchador 2", // STRING
 	usScore: 0, // INT
 	themScore: 0, // INT
+        usAdvantage: 0, // INT
+	themAdvantage: 0, // INT
+        usPenalty: 0, // INT
+	themPenalty: 0, // INT
 	timeCap: "" // STRING
 };
 
@@ -55,6 +59,30 @@ ultimateScoreboard.IncrementScore = function (team) {
 	var $this = this;
 
 	$this.Set(team+'Score',parseInt(score + 1));
+};
+
+ultimateScoreboard.IncrementAdvantage = function (team) {
+
+	// Needs to be us or them. Who could it be otherwise?
+	if (team !== "us" && team !== "them")
+		return false;
+
+	var advantage = this.Get(team+'Advantage');
+	var $this = this;
+
+	$this.Set(team+'Advantage',parseInt(advantage + 1));
+};
+
+ultimateScoreboard.IncrementPenalty = function (team) {
+
+	// Needs to be us or them. Who could it be otherwise?
+	if (team !== "us" && team !== "them")
+		return false;
+
+	var penalty = this.Get(team+'Penalty');
+	var $this = this;
+
+	$this.Set(team+'Penalty',parseInt(penalty + 1));
 };
 
 ultimateScoreboard.DecrementScore = function (team) {
@@ -196,6 +224,26 @@ ultimateScoreboard.Bind = function() {
 			return false;
 		
 		$this.IncrementScore(team);
+		return false;
+	});
+        
+        $('.action-increment-advantage').click(function(){
+		
+		var team = $(this).parents('.team-advpen').attr('data-team');
+		if (!team)
+			return false;
+		
+		$this.IncrementAdvantage(team);
+		return false;
+	});
+        
+        $('.action-increment-penalty').click(function(){
+		
+		var team = $(this).parents('.team-advpen').attr('data-team');
+		if (!team)
+			return false;
+		
+		$this.IncrementPenalty(team);
 		return false;
 	});
 
