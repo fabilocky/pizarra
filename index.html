@@ -12,10 +12,13 @@
 <!--[if IE]><![endif]--><!-- Used to speed CSS loading -->
 <link rel="stylesheet" href="reset.css">
 <link rel="stylesheet" href="styles.css?v=1.0">
-<link rel="stylesheet" href="bootstrap.min.css?v=1.0">
-<script type="text/javascript" src="jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="jquery.timer.js"></script>
-    <script type="text/javascript" src="demo.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://mjolnic.com/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://mjolnic.com/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script>
+    
     
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,7 +34,7 @@
              src="https://scontent-gru2-1.xx.fbcdn.net/v/t31.0-8/13221223_262378880779631_6670246046125740748_o.png?oh=5ef8bf9b00366a9260f1a99804dfed54&oe=59A40CF5"></a>
 
 <ul class="nav pull-right">
-    <li class="pull-right"><a href="#new-game">
+    <li class="pull-right"><a class="newGame" href="#">
         <i class="icon-plus-sign icon-white"></i>
         Nuevo Combate
     </a></li>
@@ -45,11 +48,18 @@
 </div>
 </div>
 <!-- End Nav -->
-
+<div class="container">
+    <h1>Bootstrap Color Picker Example</h1> 
+    <div id="cp2" class="input-group colorpicker-component"> 
+      <input type="text" value="#00AABB" class="form-control" /> 
+      <span class="input-group-addon"><i></i></span>
+    </div>
+</div>
 <div class="container-fluid scoreboard-back1">
 
 <div class="row-fluid">
     <h1 class="our-name team-score data-us text-align-center" style="width: 50%">Luchador 1</h1>
+    
     <div class="team-advpen" data-team="us" style="width: 10%; float: left">
         <div class="text-align-center" style="background: transparent; font-size: 25.5px">ventaja</div>
         <div class="text-align-center action-increment-advantage data-usAdvantage" style="background: transparent; font-size: 98.5px">0</div>
@@ -57,7 +67,7 @@
         <div class="text-align-center action-increment-penalty data-usPenalty" style="background: transparent; font-size: 98.5px">0</div>
     </div>
     <div class="team-score" data-team="us" style="width: 40%">
-        <div class="action-increment-score displayed-score data-usScore text-align-center" style="background: #ebd903; color: #00b100">0</div>        
+        <div class="action-increment-score displayed-score data-usScore text-align-center" style="background: #ebd903; color: #00b100; font-size: 290px">0</div>        
     </div>    
 </div>
 
@@ -74,7 +84,7 @@
         <div class="text-align-center action-increment-penalty data-themPenalty" style="background: transparent; font-size: 98.5px">0</div>
     </div>
     <div class="team-score" data-team="them" style="width: 40%;">
-        <div class="action-increment-score displayed-score data-themScore text-align-center" style="background: #222222">0</div>        
+        <div class="action-increment-score displayed-score data-themScore text-align-center" style="background: #222222; ; font-size: 290px">0</div>        
     </div>    
 </div>
 
@@ -161,69 +171,11 @@
     
 <!-- JAVASCRIPT -->
 
-<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>if (typeof jQuery == "undefined") document.write(unescape('%3Cscript src="js/jquery-1.7.1.min.js" type="text/javascript"%3E%3C/script%3E'));</script>
-
 <script src="js/bootstrap.min.js"></script>
 <!--<script src="https://raw.github.com/davatron5000/FitText.js/master/jquery.fittext.js"></script>-->
-<script>
-/*global jQuery */
-/*! 
-* FitText.js 1.0
-*
-* Copyright 2011, Dave Rupert http://daverupert.com
-* Released under the WTFPL license 
-* http://sam.zoy.org/wtfpl/
-*
-* Date: Thu May 05 14:23:00 2011 -0600
-*/
-
-(function( $ ){
-    
-  $.fn.fitText = function( kompressor, options ) {
-        
-    var settings = {
-      'minFontSize' : Number.NEGATIVE_INFINITY,
-      'maxFontSize' : Number.POSITIVE_INFINITY
-    };
-    
-    return this.each(function(){
-      var $this = $(this);              // store the object
-          var compressor = kompressor || 1; // set the compressor
-        
-      if ( options ) { 
-        $.extend( settings, options );
-      }
-        
-      // Resizer() resizes items based on the object width divided by the compressor * 10
-      var resizer = function () {
-        $this.css('font-size', Math.max(Math.min($this.width() / (compressor*10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)));
-      };
-
-      // Call once to set.
-      resizer();
-                
-      // Call on resize. Opera debounces their resize by default. 
-      $(window).resize(resizer);
-        
-    });
-
-  };
-
-})( jQuery );
-</script>
 <script src="js/scoreboard.js"></script>
-
-<!-- asynchronous google analytics
-change the UA-XXXXX-X to be your site's ID -->
 <script>
- var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
- (function(d, t) {
-  var g = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-  g.async = true;
-  g.src = '//www.google-analytics.com/ga.js';
-  s.parentNode.insertBefore(g, s);
- })(document, 'script');
+    $(function() {
+        $('#cp2').colorpicker();
+    });
 </script>

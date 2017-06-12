@@ -188,34 +188,13 @@ ultimateScoreboard.Bind = function() {
 
 	$this = this;
 
-	$('.displayed-score').fitText(0.2);
+	
 
-	$('a[href=#new-game]').click(function(){
+	$('.newGame').click(function(){
 		$this.NewGame();
 		return false;
 	});
-
-	$('a[href=#game-settings]').click(function(){
-
-		for (var i in $this.Settings) {
-			$('#game-settings-modal .settings-'+i).val($this.Settings[i]);
-		}
-
-		$('#game-settings-modal').modal();
-
-		$('#game-settings-modal a[href=#continue]').click(function(){
-
-			for (var i in $this.Settings) {
-				$this.Set(i,$('#game-settings-modal .settings-'+i).val());
-			}
-
-			$('#game-settings-modal').modal('hide');
-
-			return false;
-		});
-
-		return false;
-	});
+	
 
 	$('.action-increment-score').click(function(){
 		
